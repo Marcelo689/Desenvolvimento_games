@@ -17,16 +17,16 @@ function Sprite(img){
             this.width,this.height)
     }
     this.andar =function(){
-        if(this.movCima){
+        if(this.movCima && !this.movBaixo){
             this.posY -= this.speed;
             this.srcY = this.height*1;
-        }else if(this.movEsquerda){
+        }else if(this.movEsquerda && !this.movDireita){
             this.posX -= this.speed;
             this.srcY=this.height *2;
-        }else if(this.movBaixo){
+        }else if(this.movBaixo && !this.movCima){
             this.posY += this.speed;
             this.srcY = this.height *0;
-        }else if(this.movDireita){
+        }else if(this.movDireita && !this.movEsquerda){
             this.posX += this.speed;
             this.srcY = this.height *3;
         }

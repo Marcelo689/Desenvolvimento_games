@@ -4,9 +4,9 @@ let contexto = canvas.getContext('2d');
 let imagens =[];
 //imagens
 let jogadorI= new Image();
-jogadorI.src='../img/monster.png';
+jogadorI.src='img/monster.png';
 let fundo = new Image();
-fundo.src='../img/scene.png';
+fundo.src='img/scene.png';
 
 //valida movimentação
 let movEsquerda=movDireita=movCima=movBaixo=false;

@@ -104,16 +104,16 @@
             
 
             if(mCima){
-                posY--;
+                posY-=9;
             }
             if(mBaixo){
-                posY++;
+                posY+=9;
             }
             if(mEsquerda){
-                posX--;
+                posX-=9;
             }
             if(mDireita){
-                posX++;
+                posX+=9;
             }
         }
 
@@ -125,6 +125,18 @@
                 cor='red';
             }else{
                 cor='green';
+            }
+            if(posX<0){
+                posX=0;
+            }
+            if(posX+tamanho>canvas.width){
+                posX=canvas.width-tamanho;
+            }
+            if(posY<0){
+                posY=0;
+            }
+            if(posY+tamanho>canvas.height){
+                posY=canvas.height-tamanho;
             }
         }
         function atualiza(){

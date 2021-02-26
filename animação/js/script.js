@@ -6,45 +6,34 @@ window.onload = function(){
     spriteSheet.src = "img/img.png";
     let personagem = new Sprite(spriteSheet);
     let mapa = new Image();
-    mapa.src ='../img/scene.png';
+    mapa.src ='img/scene.png';
     let width,height;
 
     function controlesDown(e){
         let tecla = e.keyCode;
 
         switch(tecla){
-            case esquerda:if(personagem.posX+personagem.width<=0){
-        personagem.movEsquerda =false;
-          break;
-        }
+            case esquerda:
+            
             personagem.movCima=false
             personagem.movBaixo= false;
             personagem.movEsquerda = true;
             personagem.movDireita = false;
             
             break;
-        case direita:if(personagem.posX+personagem.width >= 1665){
-            personagem.movDireita =false;
-              break;
-            }
+        case direita:
             personagem.movCima=false
             personagem.movBaixo= false;
             personagem.movEsquerda = false;
             personagem.movDireita = true;
             break;
-        case cima:if(personagem.posY+personagem.height<=78){
-            personagem.movCima =false;
-              break;
-            }
+        case cima:
             personagem.movCima=true;
             personagem.movBaixo= false;
             personagem.movEsquerda = false;
             personagem.movDireita = false;
             break;
-        case baixo:if(personagem.posY+personagem.height>=850){
-            personagem.movBaixo =false;
-              break;
-            }
+        case baixo: 
             personagem.movCima=false;
             personagem.movBaixo= true;
             personagem.movEsquerda = false;
