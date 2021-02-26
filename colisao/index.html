@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colisão</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        canvas{
+            border:1px solid black;
+            width:90%;
+            height:90%;;
+            background:lightgreen;
+        }
+        #canvas-div{
+            margin:10%;
+            max-width:100%;
+            max-height:100%;
+        }
+        body{
+            background:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id='canvas-div'>
+    <canvas></canvas>
+    </div>
+
+    <script>
+        let canvas = document.querySelector('canvas');
+        let contexto = canvas.getContext('2d');
+
+        const tamanho = 50;
+        const cima = 38,baixo = 40,esquerda=37,direita =39;
+        let mCima = mBaixo = mEsquerda = mDireita = false;
+
+        //quadrado 1
+        let posX =50;
+        let posY =50;
+
+        let cor = 'green';
+        //quadrado 2
+        let blocoX = canvas.width /2;
+        let blocoY = canvas.height /2;
+
+        let width = canvas.width= document.documentElement.clientWidth;
+        let height = canvas.height= document.documentElement.clientHeight;
+
+        window.addEventListener('keydown',teclaPressionada,false);
+        window.addEventListener('keyup',(e)=>{
+            let tecla = e.keyCode;
+
+            //baixo-40 
+            //cima-38
+            //esquerda-37
+            //direita-39
+            switch(tecla)
+            {
+                case cima:
+                    mCima=false;
+                    break;
+                case baixo:
+                    mBaixo=false;
+                    break;
+                case esquerda:
+                    mEsquerda=false;
+                    break;   
+                case direita:
+                    mDireita=false;
+                    break; 
+            }
+
+        },false)
+        function teclaPressionada(e){
+            let tecla = e.keyCode;
+
+            //baixo-40 
+            //cima-38
+            //esquerda-37
+            //direita-39
+            switch(tecla)
+            {
+                case cima:
+                    mCima=true;
+                    break;
+                case baixo:
+                    mBaixo=true;
+                    break;
+                case esquerda:
+                    mEsquerda=true;
+                    break;   
+                case direita:
+                    mDireita=true;
+                    break; 
+            }
+
+        }
+        function controles(){
+            
+
+            if(mCima){
+                posY--;
+            }
+            if(mBaixo){
+                posY++;
+            }
+            if(mEsquerda){
+                posX--;
+            }
+            if(mDireita){
+                posX++;
+            }
+        }
+
+        function colidir(){
+            if(posX+tamanho >= blocoX &&
+            posX<=blocoX+tamanho &&
+            posY+tamanho>=blocoY &&
+            posY<=blocoY+tamanho){
+                cor='red';
+            }else{
+                cor='green';
+            }
+        }
+        function atualiza(){
+            controles();
+            colidir();
+            desenha();
+        }
+
+        function desenha(){
+            
+            contexto.clearRect(0,0,tamanho,tamanho);
+            contexto.fillStyle='purple';
+            contexto.fillRect(blocoX,blocoY,tamanho,tamanho);
+
+            contexto.fillStyle=cor;
+            contexto.fillRect(posX,posY,tamanho,tamanho);
+        }
+
+
+        function animar(){
+            width = document.documentElement.clientWidth;
+            height = document.documentElement.clientHeight;
+
+            canvas.width = width
+            canvas.height = height
+
+            atualiza();
+            window.requestAnimationFrame(animar);
+        }
+        animar();
+    </script>
+</body>
+</html>

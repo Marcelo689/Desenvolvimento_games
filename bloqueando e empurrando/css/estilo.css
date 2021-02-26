@@ -1,0 +1,9 @@
+div{
+    width:600px;
+    margin:0 auto;
+    padding-top:50px;
+}
+
+canvas{
+    border:1px solid black;
+}
