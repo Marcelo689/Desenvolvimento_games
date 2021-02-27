@@ -98,7 +98,7 @@ function movimenta(){
     for(let i in blocos){
         let item = blocos[i];
         if(item.visible){
-           blocoRect(personagem,item);
+           blocoRect(item,personagem);
         }
     }
 }

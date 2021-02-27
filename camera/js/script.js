@@ -156,7 +156,10 @@ if(cam.y+cam.height>mundo.height){
     cam.y=mundo.height-cam.height;
 }
 }
-
+function placar(){
+    contexto.font="bold 25px Arial";
+    contexto.fillText("Pontuação",10,30);
+}
 
 function desenha(){
 //percorrendo o laço para desenhar todas as imagens
@@ -167,6 +170,7 @@ for(let i in imagens){
     contexto.drawImage(spr.img,0,0,spr.width,spr.height,spr.x,spr.y,spr.width,spr.height);
 }
 contexto.restore();
+placar();
 }
 
 function animar(){
